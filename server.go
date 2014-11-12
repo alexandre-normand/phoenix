@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ehazlett/phoenix"
 	"github.com/ehazlett/phoenix/plugins"
+	"github.com/ehazlett/phoenix/slack"
 	"github.com/gorilla/mux"
 )
 
@@ -65,7 +65,7 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 			text = strings.Join(parts[2:], " ")
 		}
 	}
-	message := &phoenix.Message{
+	message := &slack.Message{
 		Token:       token,
 		TeamId:      teamId,
 		ChannelId:   channelId,
@@ -79,7 +79,7 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 		TriggerWord: triggerWord,
 	}
 	respText := server.PluginManager.Handle(message)
-	resp := phoenix.Response{
+	resp := slack.Response{
 		Text:  respText,
 		Parse: "full",
 	}

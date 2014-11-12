@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -46,7 +46,7 @@ func (plugin LmgtfyPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin LmgtfyPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin LmgtfyPlugin) Handle(message *slack.Message) (string, error) {
 	query := url.QueryEscape(message.Text)
 	return fmt.Sprintf("%s%s", LMGTFY_URL, query), nil
 }

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -80,7 +80,7 @@ func (plugin WeatherPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin WeatherPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin WeatherPlugin) Handle(message *slack.Message) (string, error) {
 	searchText := url.QueryEscape(message.Text)
 	if searchText == "" {
 		return "", errors.New("you must enter a *full* city name")

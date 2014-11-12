@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -66,7 +66,7 @@ func (plugin LebowskiPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin LebowskiPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin LebowskiPlugin) Handle(message *slack.Message) (string, error) {
 	resp, err := plugin.random()
 	if err != nil {
 		return "", err

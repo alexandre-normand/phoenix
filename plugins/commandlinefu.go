@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -57,7 +57,7 @@ func (plugin CommandLineFuPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin CommandLineFuPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin CommandLineFuPlugin) Handle(message *slack.Message) (string, error) {
 	searchText := url.QueryEscape(message.Text)
 	resp, err := plugin.search(searchText)
 	if err != nil {

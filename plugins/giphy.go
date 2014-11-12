@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -86,7 +86,7 @@ func (plugin GiphyPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin GiphyPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin GiphyPlugin) Handle(message *slack.Message) (string, error) {
 	searchText := url.QueryEscape(message.Text)
 	resp, err := plugin.searchGiphy(searchText)
 	if err != nil {

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 type (
@@ -98,7 +98,7 @@ func (plugin StatusBoardPlugin) getAllUserStatuses() string {
 	return status
 }
 
-func (plugin StatusBoardPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin StatusBoardPlugin) Handle(message *slack.Message) (string, error) {
 	msgParts := strings.Split(message.Text, " ")
 	command := msgParts[0]
 	text := strings.Join(msgParts[1:], " ")

@@ -1,4 +1,4 @@
-package phoenix
+package slack
 
 import (
 	"time"

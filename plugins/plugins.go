@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -13,7 +13,7 @@ var (
 
 type (
 	Plugin interface {
-		Handle(*phoenix.Message) (string, error)
+		Handle(*slack.Message) (string, error)
 		Name() string
 		Version() string
 		Author() string
@@ -66,7 +66,7 @@ func (manager *Manager) EnabledPlugins() []string {
 	return manager.enabledPlugins
 }
 
-func (manager *Manager) Handle(msg *phoenix.Message) string {
+func (manager *Manager) Handle(msg *slack.Message) string {
 	resp := "unknown plugin"
 	if msg.PluginName != "" {
 		// handle "special" plugins
@@ -86,7 +86,7 @@ func (manager *Manager) Handle(msg *phoenix.Message) string {
 	return resp
 }
 
-func (manager *Manager) runPlugin(pluginName string, message *phoenix.Message) string {
+func (manager *Manager) runPlugin(pluginName string, message *slack.Message) string {
 	resp := ""
 	for _, plugin := range manager.plugins {
 		// if enabled plugin found, execute

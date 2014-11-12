@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -60,7 +60,7 @@ func (plugin DockerHubPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin DockerHubPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin DockerHubPlugin) Handle(message *slack.Message) (string, error) {
 	searchText := url.QueryEscape(message.Text)
 	if searchText == "" {
 		return "", errors.New("you must enter a search term")

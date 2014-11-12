@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -58,7 +58,7 @@ func (plugin ChuckNorrisPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin ChuckNorrisPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin ChuckNorrisPlugin) Handle(message *slack.Message) (string, error) {
 	resp, err := plugin.randomChuck()
 	if err != nil {
 		return "", err

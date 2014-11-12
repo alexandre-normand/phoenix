@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 var (
@@ -62,7 +62,7 @@ func (plugin HackernewsPlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin HackernewsPlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin HackernewsPlugin) Handle(message *slack.Message) (string, error) {
 	resp, err := plugin.getLatest()
 	if err != nil {
 		return "", err

@@ -2,7 +2,7 @@ package plugins
 
 import (
 	"github.com/Sirupsen/logrus"
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 type (
@@ -40,7 +40,7 @@ func (plugin ExamplePlugin) Description() string {
 	return plugin.description
 }
 
-func (plugin ExamplePlugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin ExamplePlugin) Handle(message *slack.Message) (string, error) {
 	logger.WithFields(logrus.Fields{
 		"token":       message.Token,
 		"teamId":      message.TeamId,

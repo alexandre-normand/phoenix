@@ -3,7 +3,7 @@ package plugins
 import (
 	"encoding/base64"
 
-	"github.com/ehazlett/phoenix"
+	"github.com/ehazlett/phoenix/slack"
 )
 
 type (
@@ -41,7 +41,7 @@ func (plugin Base64Plugin) Description() string {
 	return plugin.description
 }
 
-func (plugin Base64Plugin) Handle(message *phoenix.Message) (string, error) {
+func (plugin Base64Plugin) Handle(message *slack.Message) (string, error) {
 	data := []byte(message.Text)
 	res := base64.StdEncoding.EncodeToString(data)
 	return res, nil
