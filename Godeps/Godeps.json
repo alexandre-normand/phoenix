@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/ehazlett/phoenix",
+	"GoVersion": "go1.2",
+	"Deps": []
+}
